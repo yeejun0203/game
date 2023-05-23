@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -186,7 +186,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418387553}
   m_LocalRotation: {x: 0.1645178, y: 0.0051371544, z: -0.0008568401, w: 0.9863604}
-  m_LocalPosition: {x: -0.1, y: 5.98, z: -9.45}
+  m_LocalPosition: {x: -0.1, y: 6.67, z: -8.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -366,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.1645178, y: 0.0051371544, z: -0.0008568401, w: 0.9863604}
-  m_LocalPosition: {x: -0.1, y: 5.98, z: -9.45}
+  m_LocalPosition: {x: -0.1, y: 6.67, z: -8.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: -0.1, y: 5.98, z: -9.45}
+  m_FollowOffset: {x: -0.1, y: 6.67, z: -8.87}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
