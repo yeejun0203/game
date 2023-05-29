@@ -33,10 +33,12 @@ public class GroundManager : MonoBehaviour
             DeleteTile();
         }
     }
+
+
     /**
      땅을 생성합니다
      */
-    public void SpawnTile()
+    private void SpawnTile()
     {
         // go라는 땅 생성
         GameObject go = Instantiate(tilePrefabs, transform.forward * zSpawn, transform.rotation);
