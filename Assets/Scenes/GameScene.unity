@@ -484,7 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefabs: {fileID: 4264192005336885853, guid: fe0174841f28d7a48ad8b821e50c0bfe, type: 3}
   zSpawn: 0
-  tileLength: 18
+  tileLength: 30
   numberOfTiles: 10
   activeTiles: []
 --- !u!4 &1163477302
