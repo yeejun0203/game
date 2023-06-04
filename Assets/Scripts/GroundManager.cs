@@ -16,12 +16,15 @@ public class GroundManager : MonoBehaviour
     // 생성된 땅을 담아놓은 리스트
     public List<GameObject> activeTiles = new List<GameObject>();
 
+    public int currentTileNum = 0;
+
     private void Start()
     {
         //초기 땅 생성 로직
         for (int i = 0; i < numberOfTiles; i++)
         {
             SpawnTile();
+            currentTileNum++;
         }
     }
     private void Update()
@@ -42,6 +45,10 @@ public class GroundManager : MonoBehaviour
     {
         // go라는 땅 생성
         GameObject go = Instantiate(tilePrefabs, transform.forward * zSpawn, transform.rotation);
+        if (currentTileNum > 2)
+        {
+            go.GetComponent<ObstacleManager>().isStart = false;
+        }
         go.transform.parent = gameObject.transform;
         activeTiles.Add(go); // 땅을 리스트에 추가
         zSpawn += tileLength; // 땅 z초기화
