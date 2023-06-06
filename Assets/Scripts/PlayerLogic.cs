@@ -45,6 +45,7 @@ public class PlayerLogic : MonoBehaviour
     void FixedUpdate()
     {
         // 실제 위치 이동
+        if (!GameManager.instance.isGameStart) return;
         rb.MovePosition(transform.position + dir * Time.fixedDeltaTime);
     }
 
