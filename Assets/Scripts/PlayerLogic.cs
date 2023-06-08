@@ -61,4 +61,10 @@ public class PlayerLogic : MonoBehaviour
             ground = false;
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.gameObject.CompareTag("Obstacle")) return;
+
+        GameManager.instance.ResetGame();
+    }
 }

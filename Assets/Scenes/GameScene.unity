@@ -873,7 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee1c1e7748e6bc46b5a0bc499941c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 12
+  jumpHeight: 10
   speed: 8
   layer:
     serializedVersion: 2
