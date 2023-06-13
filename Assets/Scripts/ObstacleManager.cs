@@ -16,10 +16,10 @@ public class ObstacleManager : MonoBehaviour
         obstacles = new GameObject[1];
         if (isStart)
         {
-            random = 7;
+            random = 9;
         } else
         {
-            random = Random.Range(0, 8);
+            random = Random.Range(0, 10);
         }
         GenerateObstacle(random);
     }
@@ -30,6 +30,7 @@ public class ObstacleManager : MonoBehaviour
         {
             case 0: // 키 큰거 2개 랜덤 생성 작은거 한 개 랜덤 생성
                 obstacles = new GameObject[3];
+
                 obstacles[0] = Instantiate(obstacle[2], spawnPoints[Random.Range(0, 3)].position, transform.rotation);
                 obstacles[1] = Instantiate(obstacle[1], spawnPoints[Random.Range(3, 6)].position, transform.rotation);
                 obstacles[2] = Instantiate(obstacle[2], spawnPoints[Random.Range(6, 9)].position, transform.rotation);
@@ -48,15 +49,17 @@ public class ObstacleManager : MonoBehaviour
                 obstacles[1] = Instantiate(obstacle[1], spawnPoints[FrontNum(1)].position, transform.rotation);
                 obstacles[2] = Instantiate(obstacle[0], spawnPoints[5].position, transform.rotation);
                 break;
-            case 3: // 키 큰거 양 옆 생성 작은거 중간 생성 * 2
-                obstacles = new GameObject[6];
+            case 3: // 키 큰거 양 옆 생성 작은거 중간 생성 * 3
+                obstacles = new GameObject[8];
 
                 obstacles[0] = Instantiate(obstacle[2], spawnPoints[6].position, transform.rotation);
-                obstacles[1] = Instantiate(obstacle[1], spawnPoints[7].position, transform.rotation);
-                obstacles[2] = Instantiate(obstacle[2], spawnPoints[8].position, transform.rotation);
-                obstacles[3] = Instantiate(obstacle[2], spawnPoints[0].position, transform.rotation);
-                obstacles[4] = Instantiate(obstacle[2], spawnPoints[1].position, transform.rotation);
-                obstacles[5] = Instantiate(obstacle[1], spawnPoints[2].position, transform.rotation);
+                obstacles[1] = Instantiate(obstacle[2], spawnPoints[8].position, transform.rotation);
+                obstacles[2] = Instantiate(obstacle[2], spawnPoints[0].position, transform.rotation);
+                obstacles[3] = Instantiate(obstacle[2], spawnPoints[1].position, transform.rotation);
+                obstacles[4] = Instantiate(obstacle[1], spawnPoints[2].position, transform.rotation);
+                obstacles[5] = Instantiate(obstacle[1], spawnPoints[3].position, transform.rotation);
+                obstacles[6] = Instantiate(obstacle[2], spawnPoints[4].position, transform.rotation);
+                obstacles[7] = Instantiate(obstacle[2], spawnPoints[5].position, transform.rotation);
                 break;
             case 4: // 중간 왼쪽 길쭉한거 오른쪽 작은거
                 obstacles = new GameObject[3];
@@ -65,12 +68,17 @@ public class ObstacleManager : MonoBehaviour
                 obstacles[1] = Instantiate(obstacle[0], spawnPoints[4].position, transform.rotation);
                 obstacles[2] = Instantiate(obstacle[1], spawnPoints[FrontNum(2)].position, transform.rotation);
                 break;
-            case 5: // 중간 왼쪽 길쭉한거 오른쪽 작은거
-                obstacles = new GameObject[3];
+            case 5: // 키 큰거 양 옆 생성 작은거 중간 생성 * 3
+                obstacles = new GameObject[8];
 
-                obstacles[0] = Instantiate(obstacle[0], spawnPoints[3].position, transform.rotation);
-                obstacles[1] = Instantiate(obstacle[0], spawnPoints[4].position, transform.rotation);
-                obstacles[2] = Instantiate(obstacle[1], spawnPoints[FrontNum(2)].position, transform.rotation);
+                obstacles[0] = Instantiate(obstacle[2], spawnPoints[6].position, transform.rotation);
+                obstacles[1] = Instantiate(obstacle[1], spawnPoints[7].position, transform.rotation);
+                obstacles[2] = Instantiate(obstacle[2], spawnPoints[8].position, transform.rotation);
+                obstacles[3] = Instantiate(obstacle[2], spawnPoints[0].position, transform.rotation);
+                obstacles[4] = Instantiate(obstacle[2], spawnPoints[1].position, transform.rotation);
+                obstacles[5] = Instantiate(obstacle[1], spawnPoints[3].position, transform.rotation);
+                obstacles[6] = Instantiate(obstacle[2], spawnPoints[4].position, transform.rotation);
+                obstacles[7] = Instantiate(obstacle[2], spawnPoints[5].position, transform.rotation);
                 break;
             case 6: // 길쭉한거 2개 양 옆 생성 작은거 한 개 중간 생성
                 obstacles = new GameObject[3];
@@ -79,7 +87,21 @@ public class ObstacleManager : MonoBehaviour
                 obstacles[1] = Instantiate(obstacle[1], spawnPoints[FrontNum(1)].position, transform.rotation);
                 obstacles[2] = Instantiate(obstacle[0], spawnPoints[5].position, transform.rotation);
                 break;
-            case 7: // 아무것도 없는거
+            case 7: // 키 큰거 2개 랜덤 생성 작은거 한 개 랜덤 생성
+                obstacles = new GameObject[3];
+
+                obstacles[0] = Instantiate(obstacle[2], spawnPoints[Random.Range(0, 3)].position, transform.rotation);
+                obstacles[1] = Instantiate(obstacle[1], spawnPoints[Random.Range(3, 6)].position, transform.rotation);
+                obstacles[2] = Instantiate(obstacle[2], spawnPoints[Random.Range(6, 9)].position, transform.rotation);
+                break;
+            case 8: // 키 큰거 3개 랜덤 생성
+                obstacles = new GameObject[3];
+
+                obstacles[0] = Instantiate(obstacle[2], spawnPoints[Random.Range(0, 3)].position, transform.rotation);
+                obstacles[1] = Instantiate(obstacle[2], spawnPoints[Random.Range(3, 6)].position, transform.rotation);
+                obstacles[2] = Instantiate(obstacle[2], spawnPoints[Random.Range(6, 9)].position, transform.rotation);
+                break;
+            case 9: // 아무것도 없는거
                 break;
         }
         if (obstacles.Length <= 1) return; 

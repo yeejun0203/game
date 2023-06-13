@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553735315}
   - component: {fileID: 553735314}
+  - component: {fileID: 553735316}
   m_Layer: 0
   m_Name: CM vcam2
   m_TagString: Untagged
@@ -278,6 +279,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 25.5, y: 0, z: 0}
+--- !u!114 &553735316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553735313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 614a7bc8e8b07564e9a06c99ebe9b151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,6 +613,7 @@ GameObject:
   - component: {fileID: 1389346949}
   - component: {fileID: 1389346952}
   - component: {fileID: 1389346950}
+  - component: {fileID: 1389346953}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -656,6 +670,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1389346953
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389346948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1442743047
 GameObject:
   m_ObjectHideFlags: 3
@@ -873,8 +904,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee1c1e7748e6bc46b5a0bc499941c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySide: 1
+  xValue: 2.5
+  dodgeSpeed: 10
   jumpHeight: 10
-  speed: 8
   layer:
     serializedVersion: 2
     m_Bits: 64

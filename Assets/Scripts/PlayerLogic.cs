@@ -2,13 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum SIDE { Left, Mid, Right }
 public class PlayerLogic : MonoBehaviour
 {
     Rigidbody rb;
 
-    public float jumpHeight;
+    [Header("### Moving Logic")]
+    public SIDE mySide = SIDE.Mid;
+    private bool leftClick, rightClick;
 
-    public float speed;
+    private float newXPos = 0f;
+    public float xValue;
+
+    public float dodgeSpeed;
+    private float x;
+
+    public float jumpHeight;
 
     // 플레이어가 땅에 있으면 true
     private bool ground;
@@ -27,13 +37,40 @@ public class PlayerLogic : MonoBehaviour
     void Update()
     {
         // 플레이어 이동
-        dir.x = Input.GetAxisRaw("Horizontal") * speed;
+        leftClick = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
+        rightClick = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
+        if (leftClick)
+        {
+            if (mySide == SIDE.Mid)
+            {
+                newXPos = -xValue;
+                mySide = SIDE.Left;
+            }
+            else if (mySide == SIDE.Right)
+            {
+                newXPos = 0;
+                mySide = SIDE.Mid;
+            }
+        }
+        else if (rightClick)
+        {
+            if (mySide == SIDE.Mid)
+            {
+                newXPos = xValue;
+                mySide = SIDE.Right;
+            }
+            else if (mySide == SIDE.Left)
+            {
+                newXPos = 0;
+                mySide = SIDE.Mid;
+            }
+        }
         dir.z = GameManager.instance.gameLevel;
 
         // 여기서 체크
         GroundCheck();
 
-        // 플레이어가 땅에 있고 스페이스바를 눌렀을때
+        // 플레이어가 땅에 있고 스페이스바를 눌렀을 때
         if (Input.GetButtonDown("Jump") && ground)
         {
             // 위로 올린다
@@ -46,7 +83,8 @@ public class PlayerLogic : MonoBehaviour
     {
         // 실제 위치 이동
         if (!GameManager.instance.isGameStart) return;
-        rb.MovePosition(transform.position + dir * Time.fixedDeltaTime);
+        x = Mathf.Lerp(x, newXPos, Time.fixedDeltaTime * dodgeSpeed);
+        rb.MovePosition(new Vector3(x, transform.position.y, transform.position.z + dir.z * Time.fixedDeltaTime));
     }
 
     void GroundCheck()
@@ -65,6 +103,6 @@ public class PlayerLogic : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Obstacle")) return;
 
-        GameManager.instance.ResetGame();
+        GameManager.instance.gameCamera.GetComponent<CameraShake>().ShakeCamera(5, 0.3f);
     }
 }
