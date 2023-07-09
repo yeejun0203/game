@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     [Header("### Game Info")]
     public float gameLevel; // 게임 속도
+    public int gameScore;
     public bool isGameStart; // 게임이 시작했는지 아닌지
     public GameObject gameCamera; // 게임 할 때 사용하는 시네마신
 
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public float maxHealth; // 최대 체력
     public float health; // 현재 체력
+
+    public GameObject obstacles;
 
     private void Awake()
     {
@@ -41,6 +44,18 @@ public class GameManager : MonoBehaviour
         else if (gameLevel < 20)
         {
             Physics.gravity = new Vector3(0, gameLevel * 3f * -1, 0);
+        }
+        else if (gameLevel < 25)
+        {
+            Physics.gravity = new Vector3(0, gameLevel * 3.5f * -1, 0);
+        }
+        else if(gameLevel < 30) 
+        {
+            Physics.gravity = new Vector3(0, gameLevel * 4f * -1, 0);
+        }
+        else
+        {
+            Physics.gravity = new Vector3(0, gameLevel * 4.5f * -1, 0);
         }
     }
     private void AddGameLevel()

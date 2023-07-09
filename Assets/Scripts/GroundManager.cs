@@ -42,7 +42,7 @@ public class GroundManager : MonoBehaviour
     private void SpawnTile()
     {
         // go¶ó´Â ¶¥ »ý¼º
-        GameObject go = Instantiate(tilePrefabs, transform.forward * zSpawn, transform.rotation);
+        GameObject go = ObjectPool.SpawnObject(tilePrefabs, transform.forward * zSpawn, transform.rotation);
         if (currentTileNum > 1)
         {
             go.GetComponent<ObstacleManager>().isStart = false;
@@ -56,7 +56,11 @@ public class GroundManager : MonoBehaviour
      **/
     void DeleteTile()
     {
-        Destroy(activeTiles[0]);
+        if (activeTiles[0].GetComponent<ObstacleManager>().isStart == false)
+        {
+            GameManager.instance.gameScore += 100;
+        }
+        ObjectPool.ReturnObjectToPool(activeTiles[0]);
         activeTiles.RemoveAt(0);
     }
 }
