@@ -25,6 +25,27 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
+        InvokeRepeating("AddGameLevel", 15f, 15f);
+    }
+    private void Update()
+    {
+        player.GetComponent<PlayerLogic>().jumpHeight = gameLevel;
+        if (gameLevel < 12)
+        {
+            Physics.gravity = new Vector3(0, gameLevel * 2.2f * -1, 0);
+        }
+        else if (gameLevel < 16)
+        {
+            Physics.gravity = new Vector3(0, gameLevel * 2.6f * -1, 0);
+        }
+        else if (gameLevel < 20)
+        {
+            Physics.gravity = new Vector3(0, gameLevel * 3f * -1, 0);
+        }
+    }
+    private void AddGameLevel()
+    {
+        gameLevel += 0.5f;
     }
 
     public void ResetGame()

@@ -36,8 +36,6 @@ public class GroundManager : MonoBehaviour
             DeleteTile();
         }
     }
-
-
     /**
      땅을 생성합니다
      */
@@ -45,7 +43,7 @@ public class GroundManager : MonoBehaviour
     {
         // go라는 땅 생성
         GameObject go = Instantiate(tilePrefabs, transform.forward * zSpawn, transform.rotation);
-        if (currentTileNum > 2)
+        if (currentTileNum > 1)
         {
             go.GetComponent<ObstacleManager>().isStart = false;
         }
