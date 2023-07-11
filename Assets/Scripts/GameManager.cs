@@ -49,13 +49,17 @@ public class GameManager : MonoBehaviour
         {
             Physics.gravity = new Vector3(0, gameLevel * 3.5f * -1, 0);
         }
-        else if(gameLevel < 30) 
+        else if (gameLevel < 30) 
         {
             Physics.gravity = new Vector3(0, gameLevel * 4f * -1, 0);
         }
-        else
+        else if (gameLevel < 35)
         {
             Physics.gravity = new Vector3(0, gameLevel * 4.5f * -1, 0);
+        }
+        else
+        {
+            Physics.gravity = new Vector3(0, gameLevel * 5f * -1, 0);
         }
     }
     private void AddGameLevel()

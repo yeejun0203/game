@@ -40,6 +40,7 @@ public class ObstacleManager : MonoBehaviour
     }
     private void OnDisable()
     {
+        if (isStart == true) isStart = false;
         if (obstacles.Length <= 1) return;
         foreach (GameObject i in obstacles)
         {
