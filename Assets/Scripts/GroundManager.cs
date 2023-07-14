@@ -30,6 +30,7 @@ public class GroundManager : MonoBehaviour
     private void Update()
     {
         // 플레이어 위치에 따른 땅 생성 및 삭제
+        if (GameManager.instance.player.GetComponent<PlayerLogic>().isLive == false) return;
         if(GameManager.instance.player.transform.position.z - 35 > zSpawn - (numberOfTiles * tileLength))
         {
             SpawnTile();

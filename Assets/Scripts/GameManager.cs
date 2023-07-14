@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (player.GetComponent<PlayerLogic>().isLive == false) return;
         player.GetComponent<PlayerLogic>().jumpHeight = gameLevel;
         if (gameLevel < 12)
         {
@@ -72,4 +73,5 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+    //메뉴버튼 메뉴화면 연결시키기
 }

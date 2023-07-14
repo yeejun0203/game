@@ -29,6 +29,8 @@ public class PlayerLogic : MonoBehaviour
     // ground 체크 할 때 쓰는 레이어
     public LayerMask layer;
 
+    public bool isLive = true;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -77,6 +79,7 @@ public class PlayerLogic : MonoBehaviour
             Vector3 jumpPower = Vector3.up * jumpHeight;
             rb.AddForce(jumpPower, ForceMode.VelocityChange);
         }
+
     }
 
     void FixedUpdate()
@@ -109,6 +112,9 @@ public class PlayerLogic : MonoBehaviour
         if (GameManager.instance.health <= 0)
         {
             GameManager.instance.gameOverPanel.SetActive(true);
+            GameManager.instance.gameLevel = 0;
+            isLive = false;
+            gameObject.SetActive(false);
         }
     }
 }
