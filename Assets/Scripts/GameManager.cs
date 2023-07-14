@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int gameScore;
     public bool isGameStart; // 게임이 시작했는지 아닌지
     public GameObject gameCamera; // 게임 할 때 사용하는 시네마신
+    public GameObject gameOverPanel;
 
     [Header("### Player Info")]
     public GameObject player;

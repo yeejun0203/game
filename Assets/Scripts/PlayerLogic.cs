@@ -104,8 +104,11 @@ public class PlayerLogic : MonoBehaviour
         if (!other.gameObject.CompareTag("Obstacle")) return;
 
         // 장애물이랑 부딪치면 실행되는 코드 (여기에다가 체력이 0보다 작아지면 게임 오버 판넬 띄우게 하셈)
-
         GameManager.instance.health -= 20f;
         GameManager.instance.gameCamera.GetComponent<CameraShake>().ShakeCamera(5, 0.2f);
+        if (GameManager.instance.health <= 0)
+        {
+            GameManager.instance.gameOverPanel.SetActive(true);
+        }
     }
 }
