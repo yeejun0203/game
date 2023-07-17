@@ -44,6 +44,7 @@ public class ObstacleManager : MonoBehaviour
         if (obstacles.Length <= 1) return;
         foreach (GameObject i in obstacles)
         {
+            if (i == null) return;
             ObjectPool.ReturnObjectToPool(i);
         }
     }
