@@ -73,5 +73,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
-    //메뉴버튼 메뉴화면 연결시키기
+
+    public void BkMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
 }
