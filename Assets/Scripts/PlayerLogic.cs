@@ -112,6 +112,7 @@ public class PlayerLogic : MonoBehaviour
         if (GameManager.instance.health <= 0)
         {
             GameManager.instance.gameOverPanel.SetActive(true);
+            ScoreManager.instance.SaveScore(GameManager.instance.gameScore);
             GameManager.instance.gameLevel = 0;
             isLive = false;
             gameObject.SetActive(false);

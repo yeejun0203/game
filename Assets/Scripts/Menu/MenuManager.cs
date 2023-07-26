@@ -6,5 +6,9 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
+    private void Start()
+    {
+        ScoreManager.instance.LoadScore();
+    }
     public void GameStart() => SceneManager.LoadScene("GameScene");
 }

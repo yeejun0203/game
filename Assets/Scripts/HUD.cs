@@ -6,7 +6,7 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
-    public enum InfoType { Health, Score }
+    public enum InfoType { Health, Score, MenuMaxScore }
     public InfoType type;
 
     TextMeshProUGUI myText;
@@ -29,6 +29,10 @@ public class HUD : MonoBehaviour
             case InfoType.Score:
                 int curScore = GameManager.instance.gameScore;
                 myText.text = string.Format("{0:n0}", curScore);
+                break;
+            case InfoType.MenuMaxScore:
+                string maxScore = ScoreManager.instance.maxScore.ToString();
+                myText.text = maxScore;
                 break;
         }
     }
