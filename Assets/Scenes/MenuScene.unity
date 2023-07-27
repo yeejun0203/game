@@ -486,6 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxScore: 0
+  curScore: 0
 --- !u!4 &89893911
 Transform:
   m_ObjectHideFlags: 0
@@ -980,6 +981,7 @@ GameObject:
   - component: {fileID: 989288321}
   - component: {fileID: 989288323}
   - component: {fileID: 989288322}
+  - component: {fileID: 989288324}
   m_Layer: 5
   m_Name: CurScore
   m_TagString: Untagged
@@ -1104,6 +1106,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989288320}
   m_CullTransparentMesh: 1
+--- !u!114 &989288324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989288320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e48b21f525d1a438c8f2447db93c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 3
 --- !u!1 &1103319329
 GameObject:
   m_ObjectHideFlags: 0

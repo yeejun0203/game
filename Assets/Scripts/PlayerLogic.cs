@@ -113,6 +113,7 @@ public class PlayerLogic : MonoBehaviour
         {
             GameManager.instance.gameOverPanel.SetActive(true);
             ScoreManager.instance.SaveScore(GameManager.instance.gameScore);
+            ScoreManager.instance.curScore = GameManager.instance.gameScore;
             GameManager.instance.gameLevel = 0;
             isLive = false;
             gameObject.SetActive(false);
