@@ -1954,7 +1954,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c503f69f3e2b2694eb3c74909e072ebf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2520,8 +2520,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySide: 1
   xValue: 2.5
-  dodgeSpeed: 10
+  dodgeSec: 0.4
   jumpHeight: 10
+  wallCrashParti: {fileID: 2852559930152851467, guid: 635ef6782c433f7408f4886531d32975, type: 3}
   layer:
     serializedVersion: 2
     m_Bits: 64

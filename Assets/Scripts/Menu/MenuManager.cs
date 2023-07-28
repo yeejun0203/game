@@ -10,5 +10,4 @@ public class MenuManager : MonoBehaviour
     {
         ScoreManager.instance.LoadScore();
     }
-    public void GameStart() => SceneManager.LoadScene("GameScene");
 }

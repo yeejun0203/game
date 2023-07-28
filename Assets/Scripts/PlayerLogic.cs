@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [System.Serializable]
 public enum SIDE { Left, Mid, Right }
@@ -15,10 +16,12 @@ public class PlayerLogic : MonoBehaviour
     private float newXPos = 0f;
     public float xValue;
 
-    public float dodgeSpeed;
-    private float x;
+    public float dodgeSec;
 
     public float jumpHeight;
+
+    [SerializeField]
+    private GameObject wallCrashParti;
 
     // 플레이어가 땅에 있으면 true
     private bool ground;
@@ -53,6 +56,11 @@ public class PlayerLogic : MonoBehaviour
                 newXPos = 0;
                 mySide = SIDE.Mid;
             }
+            else if (mySide == SIDE.Left)
+            {
+                Vector3 wallPos = new Vector3(-xValue - 1.5f, transform.position.y + 1.5f, transform.position.z);
+                ObjectPool.SpawnObject(wallCrashParti, wallPos, wallCrashParti.transform.rotation);
+            }
         }
         else if (rightClick)
         {
@@ -65,6 +73,11 @@ public class PlayerLogic : MonoBehaviour
             {
                 newXPos = 0;
                 mySide = SIDE.Mid;
+            }
+            else if (mySide == SIDE.Right)
+            {
+                Vector3 wallPos = new Vector3(xValue + 1.5f, transform.position.y + 1.5f, transform.position.z);
+                ObjectPool.SpawnObject(wallCrashParti, wallPos, wallCrashParti.transform.rotation);
             }
         }
         dir.z = GameManager.instance.gameLevel;
@@ -86,8 +99,10 @@ public class PlayerLogic : MonoBehaviour
     {
         // 실제 위치 이동
         if (!GameManager.instance.isGameStart) return;
-        x = Mathf.Lerp(x, newXPos, Time.fixedDeltaTime * dodgeSpeed);
-        rb.MovePosition(new Vector3(x, transform.position.y, transform.position.z + dir.z * Time.fixedDeltaTime));
+        /*x = Mathf.Lerp(x, newXPos, Time.fixedDeltaTime * dodgeSpeed);
+        rb.MovePosition(new Vector3(x, transform.position.y, transform.position.z + dir.z * Time.fixedDeltaTime));*/
+        transform.DOMoveX(newXPos, dodgeSec).SetEase(Ease.OutQuint);
+        rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z + dir.z * Time.fixedDeltaTime));
     }
 
     void GroundCheck()

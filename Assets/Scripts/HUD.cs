@@ -36,7 +36,6 @@ public class HUD : MonoBehaviour
                 break;
             case InfoType.MenuCurScore:
                 string curScore = ScoreManager.instance.curScore.ToString();
-                Debug.Log(ScoreManager.instance);
                 myText.text = curScore;
                 break;
         }
