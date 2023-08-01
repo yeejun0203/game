@@ -35,11 +35,7 @@ public class GameManager : MonoBehaviour
     {
         if (player.GetComponent<PlayerLogic>().isLive == false) return;
         player.GetComponent<PlayerLogic>().jumpHeight = gameLevel;
-        if (gameLevel < 12)
-        {
-            Physics.gravity = new Vector3(0, gameLevel * 2.2f * -1, 0);
-        }
-        else if (gameLevel < 16)
+        if (gameLevel < 16)
         {
             Physics.gravity = new Vector3(0, gameLevel * 2.6f * -1, 0);
         }
@@ -71,11 +67,11 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        SceneManager.LoadScene("GameScene");
+        MySceneManager.Instance.ChangeScene("GameScene");
     }
 
     public void BkMenu()
     {
-        SceneManager.LoadScene("MenuScene");
+        MySceneManager.Instance.ChangeScene("MenuScene");
     }
 }

@@ -32,11 +32,14 @@ public class PlayerLogic : MonoBehaviour
     // ground 체크 할 때 쓰는 레이어
     public LayerMask layer;
 
+    Material playerMaterial;
+
     public bool isLive = true;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        playerMaterial = GetComponentInChildren<MeshRenderer>().material;
     }
 
     void Update()
@@ -60,6 +63,7 @@ public class PlayerLogic : MonoBehaviour
             {
                 Vector3 wallPos = new Vector3(-xValue - 1.5f, transform.position.y + 1.5f, transform.position.z);
                 ObjectPool.SpawnObject(wallCrashParti, wallPos, wallCrashParti.transform.rotation);
+                StartCoroutine(WallColor());
             }
         }
         else if (rightClick)
@@ -78,6 +82,7 @@ public class PlayerLogic : MonoBehaviour
             {
                 Vector3 wallPos = new Vector3(xValue + 1.5f, transform.position.y + 1.5f, transform.position.z);
                 ObjectPool.SpawnObject(wallCrashParti, wallPos, wallCrashParti.transform.rotation);
+                StartCoroutine(WallColor());
             }
         }
         dir.z = GameManager.instance.gameLevel;
@@ -99,10 +104,8 @@ public class PlayerLogic : MonoBehaviour
     {
         // 실제 위치 이동
         if (!GameManager.instance.isGameStart) return;
-        /*x = Mathf.Lerp(x, newXPos, Time.fixedDeltaTime * dodgeSpeed);
-        rb.MovePosition(new Vector3(x, transform.position.y, transform.position.z + dir.z * Time.fixedDeltaTime));*/
-        transform.DOMoveX(newXPos, dodgeSec).SetEase(Ease.OutQuint);
-        rb.MovePosition(new Vector3(transform.position.x, transform.position.y, transform.position.z + dir.z * Time.fixedDeltaTime));
+        rb.DOMoveX(newXPos, dodgeSec).SetEase(Ease.OutQuint);
+        rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.z + dir.z * Time.fixedDeltaTime));
     }
 
     void GroundCheck()
@@ -115,6 +118,19 @@ public class PlayerLogic : MonoBehaviour
         } else
         {
             ground = false;
+        }
+    }
+    IEnumerator WallColor()
+    {
+        playerMaterial.color = Color.red;
+        while (true)
+        {
+            playerMaterial.color = new Color(playerMaterial.color.r, playerMaterial.color.g + 0.02f, playerMaterial.color.b + 0.02f);
+            yield return new WaitForEndOfFrame();
+            if (playerMaterial.color == Color.white)
+            {
+                yield break;
+            }
         }
     }
     private void OnTriggerEnter(Collider other)

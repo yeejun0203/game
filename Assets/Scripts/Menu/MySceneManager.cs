@@ -33,14 +33,14 @@ public class MySceneManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    public void ChangeScene()
+    public void ChangeScene(string sceneName)
     {
         fadeImg.DOFade(1, fadeDuration)
             .OnStart(() => {
                 fadeImg.blocksRaycasts = true; //아래 레이캐스트 막기
             })
             .OnComplete(() => {
-                SceneManager.LoadScene("GameScene");
+                SceneManager.LoadScene(sceneName);
             });
     }
 
