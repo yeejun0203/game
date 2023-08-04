@@ -11,7 +11,7 @@ public class PlayerLogic : MonoBehaviour
 
     [Header("### Moving Logic")]
     public SIDE mySide = SIDE.Mid;
-    private bool leftClick, rightClick;
+    public bool leftClick, rightClick, upClick;
 
     private float newXPos = 0f;
     public float xValue;
@@ -45,8 +45,9 @@ public class PlayerLogic : MonoBehaviour
     void Update()
     {
         // 플레이어 이동
-        leftClick = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
+        /*leftClick = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
         rightClick = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
+        upClick = Input.GetButtonDown("Jump");*/
         if (leftClick)
         {
             if (mySide == SIDE.Mid)
@@ -65,6 +66,8 @@ public class PlayerLogic : MonoBehaviour
                 ObjectPool.SpawnObject(wallCrashParti, wallPos, wallCrashParti.transform.rotation);
                 StartCoroutine(WallColor());
             }
+            SoundManager.Instance.StartSoundEffect(SOUNDS.Sweep);
+            leftClick = false;
         }
         else if (rightClick)
         {
@@ -84,6 +87,8 @@ public class PlayerLogic : MonoBehaviour
                 ObjectPool.SpawnObject(wallCrashParti, wallPos, wallCrashParti.transform.rotation);
                 StartCoroutine(WallColor());
             }
+            SoundManager.Instance.StartSoundEffect(SOUNDS.Sweep);
+            rightClick = false;
         }
         dir.z = GameManager.instance.gameLevel;
 
@@ -91,11 +96,12 @@ public class PlayerLogic : MonoBehaviour
         GroundCheck();
 
         // 플레이어가 땅에 있고 스페이스바를 눌렀을 때
-        if (Input.GetButtonDown("Jump") && ground)
+        if (upClick && ground)
         {
             // 위로 올린다
             Vector3 jumpPower = Vector3.up * jumpHeight;
             rb.AddForce(jumpPower, ForceMode.VelocityChange);
+            upClick = false;
         }
 
     }

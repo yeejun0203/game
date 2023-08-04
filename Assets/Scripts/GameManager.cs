@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+#if UNITY_ANDROID
+        Application.targetFrameRate = 120;
+#endif
         health = maxHealth;
         InvokeRepeating("AddGameLevel", 15f, 15f);
     }
