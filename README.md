@@ -16,3 +16,6 @@ GameManager.instance.health 로 플레이어 체력 가져오기 가능
 
 - [ ] Make GameOver (카메라 흔들림 구현)
 - [ ] Make Game
+
+
+이제부터 열심히 해보자고
