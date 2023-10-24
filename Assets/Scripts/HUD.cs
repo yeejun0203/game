@@ -17,7 +17,7 @@ public class HUD : MonoBehaviour
         myText = GetComponent<TextMeshProUGUI>();
         mySlider = GetComponent<Slider>();
     }
-    private void LateUpdate()
+    public void LateUpdate()
     {
         switch (type)
         {
