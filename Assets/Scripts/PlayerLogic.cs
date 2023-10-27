@@ -8,16 +8,16 @@ public enum SIDE { Left, Mid, Right }
 public class PlayerLogic : MonoBehaviour
 {
     Rigidbody rb;
-
+    
     [Header("### Moving Logic")]
     public SIDE mySide = SIDE.Mid;
     public bool leftClick, rightClick, upClick;
 
     private float newXPos = 0f;
     public float xValue;
-
+    
     public float dodgeSec;
-
+    
     public float jumpHeight;
 
     [SerializeField]
@@ -111,8 +111,7 @@ public class PlayerLogic : MonoBehaviour
         // 실제 위치 이동
         if (!GameManager.instance.isGameStart) return;
         rb.DOMoveX(newXPos, dodgeSec).SetEase(Ease.OutQuint);
-        rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.z + dir.z * Time.fixedDeltaTime * V_Value.instance.V_Val/*이걸로 곱해서
-        이동속도를 조절할려 했지만 오류 instance 를 잘못 사용한것 같음*/));
+        rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.z + dir.z * Time.fixedDeltaTime));
     }
 
     void GroundCheck()

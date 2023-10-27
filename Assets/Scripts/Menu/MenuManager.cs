@@ -12,4 +12,5 @@ public class MenuManager : MonoBehaviour
     }
 
     public void StartGame() => MySceneManager.Instance.ChangeScene("GameScene");
+    public void OptionMenu() => MySceneManager.Instance.ChangeScene("Option");
 }
