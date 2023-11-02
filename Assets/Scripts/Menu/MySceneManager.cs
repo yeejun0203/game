@@ -9,6 +9,8 @@ public class MySceneManager : MonoBehaviour
     public CanvasGroup fadeImg;
     [SerializeField] float fadeDuration = 2;
 
+    public bool hardSet;
+
     public static MySceneManager Instance
     {
         get

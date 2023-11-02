@@ -45,9 +45,9 @@ public class PlayerLogic : MonoBehaviour
     void Update()
     {
         // 플레이어 이동
-        /*leftClick = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
+        leftClick = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
         rightClick = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
-        upClick = Input.GetButtonDown("Jump");*/
+        upClick = Input.GetButtonDown("Jump");
         if (leftClick)
         {
             if (mySide == SIDE.Mid)

@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OptionManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject toggle;
+
+    private void Update()
     {
-        
+        toggle.GetComponent<Toggle>().isOn = MySceneManager.Instance.hardSet;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HardSet(bool isHard)
     {
-        
+        if (isHard)
+        {
+            MySceneManager.Instance.hardSet = true;
+        }
+        else
+        {
+            MySceneManager.Instance.hardSet = false;
+        }
+    }
+    public void BkMenu()
+    {
+        MySceneManager.Instance.ChangeScene("MenuScene");
     }
 }

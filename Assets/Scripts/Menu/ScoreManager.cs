@@ -25,7 +25,6 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         filePath = Application.persistentDataPath + "/MyScore.txt";
-        Debug.Log(filePath);
         var obj = FindObjectsOfType<ScoreManager>();
         if (obj.Length == 1)
         {

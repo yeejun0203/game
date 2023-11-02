@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject obstacles;
 
+    public bool isHardMod; // 하드 모드
+
     private void Awake()
     {
         // 세팅
@@ -28,11 +30,20 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        isHardMod = MySceneManager.Instance.hardSet;
 #if UNITY_ANDROID
         Application.targetFrameRate = 120;
 #endif
         health = maxHealth;
-        InvokeRepeating("AddGameLevel", 15f, 15f);
+        if (isHardMod)
+        {
+            InvokeRepeating("AddGameLevel", 8f, 8f);
+        }
+        else
+        {
+            InvokeRepeating("AddGameLevel", 13f, 13f);
+        }
+
     }
     private void Update()
     {
@@ -65,7 +76,14 @@ public class GameManager : MonoBehaviour
     }
     private void AddGameLevel()
     {
-        gameLevel += 0.5f;
+        if(isHardMod)
+        {
+            gameLevel += 0.7f;
+        }
+        else
+        {
+            gameLevel += 0.5f;
+        }
     }
 
     public void ResetGame()
