@@ -44,10 +44,11 @@ public class PlayerLogic : MonoBehaviour
 
     void Update()
     {
+        if (!isLive) return;
         // 플레이어 이동
-        leftClick = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
+        /*leftClick = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
         rightClick = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
-        upClick = Input.GetButtonDown("Jump");
+        upClick = Input.GetButtonDown("Jump");*/
         if (leftClick)
         {
             if (mySide == SIDE.Mid)
@@ -108,6 +109,8 @@ public class PlayerLogic : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isLive) return;
+
         // 실제 위치 이동
         if (!GameManager.instance.isGameStart) return;
         rb.DOMoveX(newXPos, dodgeSec).SetEase(Ease.OutQuint);
@@ -153,7 +156,6 @@ public class PlayerLogic : MonoBehaviour
             ScoreManager.instance.curScore = GameManager.instance.gameScore;
             GameManager.instance.gameLevel = 0;
             isLive = false;
-            gameObject.SetActive(false);
         }
     }
 }
